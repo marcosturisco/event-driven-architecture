@@ -26,3 +26,7 @@ Content-Type: application/json
     "account_id_to": "a2",
     "amount": 100.0
 }
+
+###
+
+GET http://localhost:8081/balances/a1 HTTP/1.1
