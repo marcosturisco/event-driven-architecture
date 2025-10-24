@@ -20,6 +20,13 @@ services:
       - 3306:3306
     volumes:
       - .docker/mysql:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-proot" ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
 
   zookeeper:
     image: "confluentinc/cp-zookeeper:6.1.0"
@@ -55,6 +62,12 @@ services:
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 100
       KAFKA_LOG_RETENTION_MS: -1
       CONFLUENT_METRICS_ENABLE: 'false'
+    healthcheck:
+      test: ["CMD", "bash", "-c", "echo > /dev/tcp/kafka/9092"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 25s
 
   control-center:
     image: confluentinc/cp-enterprise-control-center:7.3.0
@@ -71,4 +84,17 @@ services:
       CONTROL_CENTER_MONITORING_INTERCEPTOR_TOPIC_PARTITIONS: 1
       CONFLUENT_METRICS_TOPIC_REPLICATION: 1
       PORT: 9021
+
+  spring-consumer:
+    image: dockermactur/spring-consumer-app:1.0
+    depends_on:
+      - kafka
+      - mysql
+    environment:
+      MYSQL_DATABASE: wallet-consumer
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "8081:8081"
+    restart: on-failure
   
