@@ -41,3 +41,7 @@ CREATE TABLE IF NOT EXISTS balances (
     account_id VARCHAR(255),
     balance INT DEFAULT 0
 );
+
+INSERT INTO balances (id, account_id, balance) VALUES
+('b1', 'a1', 1000),
+('b2', 'a2', 1500);

@@ -24,7 +24,7 @@ Content-Type: application/json
 {
     "account_id_from": "a1",
     "account_id_to": "a2",
-    "amount": 100.0
+    "amount": 50.0
 }
 
 ###
