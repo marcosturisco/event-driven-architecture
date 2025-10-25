@@ -38,10 +38,8 @@ USE `wallet-consumer`;
 
 CREATE TABLE IF NOT EXISTS balances (
     id varchar(36) PRIMARY KEY,
-    account_id VARCHAR(255),
-    balance INT DEFAULT 0
+    account_id_from VARCHAR(255),
+    account_id_to VARCHAR(255),
+    balance_account_id_from INT DEFAULT 0,
+    balance_account_id_to INT DEFAULT 0
 );
-
-INSERT INTO balances (id, account_id, balance) VALUES
-('b1', 'a1', 1000),
-('b2', 'a2', 1500);
