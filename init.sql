@@ -25,12 +25,12 @@ CREATE TABLE IF NOT EXISTS transactions (
 );
 
 INSERT INTO clients (id, name, email, created_at) VALUES
-('c1', 'Alice Silva', 'alice.silva@example.com', '2025-10-24'),
-('c2', 'Bruno Costa', 'bruno.costa@example.com', '2025-10-24');
+('c1', 'Grace Maia', 'grace.maia@example.com', '1999-12-24'),
+('c2', 'Elaina Mendonca', 'elaina.mendonca@example.com', '1999-12-24');
 
 INSERT INTO accounts (id, client_id, balance, created_at) VALUES
-('a1', 'c1', 1000, '2025-10-24'),
-('a2', 'c2', 1500, '2025-10-24');
+('a1', 'c1', 1000, '1999-12-24'),
+('a2', 'c2', 1000, '1999-12-24');
 
 CREATE DATABASE IF NOT EXISTS `wallet-consumer`;
 
@@ -41,5 +41,6 @@ CREATE TABLE IF NOT EXISTS balances (
     account_id_from VARCHAR(255),
     account_id_to VARCHAR(255),
     balance_account_id_from INT DEFAULT 0,
-    balance_account_id_to INT DEFAULT 0
+    balance_account_id_to INT DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
