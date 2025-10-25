@@ -44,3 +44,6 @@ CREATE TABLE IF NOT EXISTS balances (
     balance_account_id_to INT DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+INSERT INTO balances (id, account_id_from, account_id_to, balance_account_id_from, balance_account_id_to, created_at) VALUES
+(UUID(), 'a1', 'a2', 1000, 1000, NOW());
