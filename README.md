@@ -10,7 +10,7 @@ Aplicação que demonstra o uso de uma arquitetura baseada em eventos.
 1. Ao clonar o projeto do github na máquina local
 2. Execute o comando `$docker-compose up -d --build`
 3. Após todos os containers subirem e estarem inicializados
-4. Abrir o arquivo client.http do projeto, que fica na pasta `api`
+4. Abrir o arquivo `client.http` do projeto, que fica na pasta `api`
 5. Clicar no link de ação Send Request da linha 32 que executa a chamada GET no endpoint `balances/a1`, onde a1 é a chave da account carregada na inicialização do projeto
 
 ## Objetivo do Desafio
